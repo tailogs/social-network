@@ -44,3 +44,4 @@ if ($messages) {
 }
 
 echo json_encode(['success' => true, 'messages' => $messages, 'last_id' => $messages ? $max_id : $last_id]);
+?>

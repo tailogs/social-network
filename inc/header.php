@@ -33,10 +33,17 @@ $(function() {
                     // Очищаем текущий список чатов
                     ul.empty();
                     
+                    // Проверяем, есть ли уже сообщение "Нет активных чатов"
+                    const noChatsMessage = sidebar.find('p.no-chats-message');
+                    
                     if (data.chats.length === 0) {
-                        sidebar.find('h4').after('<p>Нет активных чатов.</p>');
+                        // Добавляем сообщение, только если его ещё нет
+                        if (!noChatsMessage.length) {
+                            sidebar.find('h4').after('<p class="no-chats-message">Нет активных чатов.</p>');
+                        }
                     } else {
-                        sidebar.find('p').remove(); // Удаляем сообщение "Нет чатов"
+                        // Удаляем сообщение "Нет чатов", если оно есть
+                        noChatsMessage.remove();
                         data.chats.forEach(chat => {
                             const li = $(`
                                 <li class="mb-2">
