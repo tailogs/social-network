@@ -1,0 +1,5 @@
+*.db
+*log*
+combined.lua
+*.jpg
+*.gif
